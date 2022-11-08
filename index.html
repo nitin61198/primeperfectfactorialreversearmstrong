@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+      form {
+        text-align: center;
+      }
+      input {
+        padding: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 260px;
+        height: 30px;
+        font-size: 18px;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: auto;
+        text-align: center;
+        /* border: 1px solid red; */
+        gap: 50px;
+      }
+      input[type="submit"] {
+        width: 200px;
+        height: 40px;
+        text-align: center;
+        font-size: 19px;
+        margin-left: 70px;
+        margin-right: 70px;
+        color: rgb(251, 250, 248);
+        background-color: rgb(0, 0, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form id="form4">
+        <input type="text" name="" id="number4" />
+        <input type="submit" value="Armstrong Number" />
+        <input type="text" id="result4" name="" />
+      </form>
+
+      <form id="form3">
+        <input type="text" name="" id="number3" />
+        <input type="submit" value="Perfect number" />
+        <input type="text" id="result3" name="" />
+      </form>
+
+      <form id="form2">
+        <input type="text" name="" id="number2" />
+        <input type="submit" value="Factorial" />
+        <input type="text" id="result2" name="" />
+      </form>
+
+      <form id="form1">
+        <input type="text" name="" id="number1" />
+        <input type="submit" value="Prime" />
+        <input type="text" id="result1" name="" />
+      </form>
+
+      <form id="form">
+        <input type="text" name="" id="number" />
+        <input type="submit" value="Reverse" />
+        <input type="text" id="result" name="" />
+      </form>
+    </div>
+
+    <script>
+      /* Armstrong Number */
+
+      var frm4 = document.getElementById("form4");
+      frm4.onsubmit = function () {
+        event.preventDefault();
+        var user = document.getElementById("number4").value;
+        var preview = document.getElementById("result4");
+
+        let sum = 0;
+
+        let temp = user;
+        while (temp > 0) {
+          let remainder = temp % 10;
+
+          sum += remainder * remainder * remainder;
+
+          temp = parseInt(temp / 10);
+        }
+
+        if (sum == user) {
+          preview.value = `${user} is an Armstrong number`;
+        } else {
+          preview.value = `${user} is not an Armstrong number`;
+        }
+
+        return false;
+      };
+
+      /* Perfect number */
+
+      var frm3 = document.getElementById("form3");
+      frm3.onsubmit = function () {
+        event.preventDefault();
+        var user = document.getElementById("number3").value;
+        var preview = document.getElementById("result3");
+
+        var flag,
+          remainder,
+          addition = 0,
+          i;
+
+        flag = user;
+        for (i = 0; i < user; i++) {
+          remainder = user % i;
+          if (remainder == 0) {
+            addition += i;
+          }
+        }
+        if (addition == flag) {
+          preview.value = user + " is a perfect number";
+        } else {
+          preview.value = user + " is not a perfect number";
+        }
+
+        return false;
+      };
+
+      /* Factorial number */
+
+      var frm2 = document.getElementById("form2");
+      frm2.onsubmit = function () {
+        event.preventDefault();
+        var user = document.getElementById("number2").value;
+        var preview = document.getElementById("result2");
+
+        var i, f;
+        f = 1;
+        for (i = 1; i <= user; i++) {
+          f = f * i;
+        }
+
+        preview.value = "Factorial of " + user + " is " + f;
+        return false;
+      };
+
+      /* Prime number */
+
+      var frm1 = document.getElementById("form1");
+      frm1.onsubmit = function () {
+        event.preventDefault();
+        var user = document.getElementById("number1").value;
+        var preview = document.getElementById("result1");
+
+        var i,
+          chk = 0;
+
+        for (i = 2; i < user; i++) {
+          if (user % i == 0) {
+            chk++;
+            break;
+          }
+        }
+        if (chk == 0) preview.value = user + " is prime number";
+        else preview.value = user + " is not a prime number";
+
+        return false;
+      };
+
+      /* Reverse number */
+
+      var frm = document.getElementById("form");
+      frm.onsubmit = function () {
+        event.preventDefault();
+        var user = document.getElementById("number").value;
+        var preview = document.getElementById("result");
+        var i,
+          rev = 0;
+        var res = user;
+        while (user != 0) {
+          rev = rev * 10 + (user % 10);
+          user = parseInt(user / 10);
+        }
+        preview.value = "reverse of " + res + " is " + rev;
+        return false;
+      };
+    </script>
+  </body>
+</html>
